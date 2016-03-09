@@ -9,7 +9,7 @@ module.exports = GemWiseguy =
   messages: []
   messenger: null
   subscriptions: null
-  allToggled: false=
+  allToggled: false
   
   activate: (state) ->
     @messages = []
