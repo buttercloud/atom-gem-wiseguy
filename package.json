@@ -1,0 +1,33 @@
+{
+  "name": "gem-wiseguy",
+  "main": "./lib/gem-wiseguy",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "gem-wiseguy:toggle"
+  },
+  "repository": "https://github.com/atom/gem-wiseguy",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.3.0",
+    "shelljs": "^0.6.0"
+  },
+  "activationCommands": {
+    "activationCommands": {"atom-workspace": []}
+  },
+  "package-deps": [
+    "inline-messenger"
+  ],
+  "consumedServices": {
+    "inline-messaging": {
+      "versions": {
+        "^1.0.0": "consumeInlineMessenger"
+      }
+    }
+  }
+}

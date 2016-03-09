@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle gem-wiseguy'
+      'command': 'gem-wiseguy:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'gem-wiseguy'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'gem-wiseguy:toggle'
+        }
+      ]
+    ]
+  }
+]
