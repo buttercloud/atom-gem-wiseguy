@@ -3,8 +3,7 @@
 Get quick info about your Gemfile gems without leaving your editor.
 
 # Installing
-
-`apm install gem-wiseguy`
+`apm install inline-messenger gem-wiseguy`
 
 # Current features:
 - Scans your Gemfile and creates a tooltip for each gem with:
@@ -17,3 +16,9 @@ Get quick info about your Gemfile gems without leaving your editor.
 # Screenshot
 ![Screenshot](https://raw.githubusercontent.com/buttercloud/atom-gem-wiseguy/master/gem-wiseguy-screenshot-1.png
 )
+
+# Author & Contributors
+
+This package was developed by [Buttercloud](http://www.buttercloud.com).
+
+Maintained by: Ahmad Hammad [@afhammad](https://github.com/afhammad)
