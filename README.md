@@ -5,6 +5,16 @@ Get quick info about your Gemfile gems without leaving your editor.
 # Installing
 `apm install inline-messenger gem-wiseguy`
 
+# Usage
+
+* Open your Gemfile.
+* Toggle gem-wiseguy using a the command
+`Gem Wiseguy: Toggle`
+or keyboard shortcut
+`CTRL-ALT-g`
+
+Will take a second to load the gem info form rubygems.org
+
 # Current features:
 - Scans your Gemfile and creates a tooltip for each gem with:
   - Quick Links to Documentation, Source Code and Issue Tracker
