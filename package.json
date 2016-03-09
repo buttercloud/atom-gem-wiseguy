@@ -24,10 +24,11 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-package-dependencies": "latest",
     "lodash": "^4.3.0",
     "shelljs": "^0.6.0"
   },
-  "package-deps": [
+  "package-dependencies": [
     "inline-messenger"
   ],
   "consumedServices": {

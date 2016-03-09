@@ -59,9 +59,9 @@ module.exports = GemWiseguy =
               console.log(e)
               return false
         else
-          console.log "you're not in gemfile"
+          atom.notifications.addWarning "You must have your Gemfile open to turn on gem-wiseguy"
       else
-          console.log "Messenger not loaded"
+        atom.notifications.addError("You need to install the 'inline-messenger' package in order to use gem-wiseguy")
     else
       @destroyMessages()
 
