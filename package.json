@@ -1,14 +1,13 @@
 {
   "name": "gem-wiseguy",
   "main": "./lib/gem-wiseguy",
-  "version": "0.0.0",
-  "description": "A short description of your package",
-  "keywords": [
-  ],
+  "version": "0.1.0",
+  "description": "Get quick info about your Gemfile gems without leaving your editor.",
+  "keywords": ["gem", "gems", "gemfile", "bundle", "bundler", "packages", "ruby", "rails"],
   "activationCommands": {
     "atom-workspace": "gem-wiseguy:toggle"
   },
-  "repository": "https://github.com/atom/gem-wiseguy",
+  "repository": "https://github.com/a/gem-wiseguy",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
