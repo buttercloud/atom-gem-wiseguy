@@ -8,11 +8,11 @@ Get quick info about your Gemfile gems without leaving your editor.
 # Usage
 
 * Open your Gemfile.
-* Toggle gem-wiseguy using a the command
+* Toggle gem-wiseguy using the command:
 `Gem Wiseguy: Toggle`
 or keyboard shortcut
 `CTRL-ALT-g`
-
+ 
 Will take a second to load the gem info form rubygems.org
 
 # Current features:
