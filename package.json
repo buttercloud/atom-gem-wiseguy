@@ -1,11 +1,22 @@
 {
   "name": "gem-wiseguy",
   "main": "./lib/gem-wiseguy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Get quick info about your Gemfile gems without leaving your editor.",
-  "keywords": ["gem", "gems", "gemfile", "bundle", "bundler", "packages", "ruby", "rails"],
+  "keywords": [
+    "gem",
+    "gems",
+    "gemfile",
+    "bundle",
+    "bundler",
+    "packages",
+    "ruby",
+    "rails"
+  ],
   "activationCommands": {
-    "atom-workspace": "gem-wiseguy:toggle"
+    "activationCommands": {
+      "atom-workspace": []
+    }
   },
   "repository": "https://github.com/buttercloud/atom-gem-wiseguy",
   "license": "MIT",
@@ -15,9 +26,6 @@
   "dependencies": {
     "lodash": "^4.3.0",
     "shelljs": "^0.6.0"
-  },
-  "activationCommands": {
-    "activationCommands": {"atom-workspace": []}
   },
   "package-deps": [
     "inline-messenger"
