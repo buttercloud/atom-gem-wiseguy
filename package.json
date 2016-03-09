@@ -7,7 +7,7 @@
   "activationCommands": {
     "atom-workspace": "gem-wiseguy:toggle"
   },
-  "repository": "https://github.com/a/gem-wiseguy",
+  "repository": "https://github.com/buttercloud/atom-gem-wiseguy",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
