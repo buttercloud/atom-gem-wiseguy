@@ -1,7 +1,7 @@
 {
   "name": "gem-wiseguy",
   "main": "./lib/gem-wiseguy",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Get quick info about your Gemfile gems without leaving your editor.",
   "keywords": [
     "gem",
