@@ -2,8 +2,12 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle gem-wiseguy'
-      'command': 'gem-wiseguy:toggle'
+      'label': 'Toggle all gems info'
+      'command': 'gem-wiseguy:toggle-all'
+    },
+    {
+      'label': 'Toggle gem info at cursor'
+      'command': 'gem-wiseguy:toggle-at-cursor'
     }
   ]
 'menu': [
@@ -13,8 +17,12 @@
       'label': 'gem-wiseguy'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'gem-wiseguy:toggle'
+          'label': 'Toggle all gems info'
+          'command': 'gem-wiseguy:toggle-all'
+        },
+        {
+          'label': 'Toggle gem info at cursor'
+          'command': 'gem-wiseguy:toggle-at-cursor'
         }
       ]
     ]

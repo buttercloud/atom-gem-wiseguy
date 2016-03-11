@@ -1,4 +1,4 @@
-{CompositeDisposable} = require 'atom'
+{CompositeDisposable, Range} = require 'atom'
 shell = require 'shelljs'
 path = require 'path'
 _ = require 'lodash'
@@ -10,6 +10,7 @@ module.exports = GemWiseguy =
   messenger: null
   subscriptions: null
   allToggled: false
+  gemNameRegex: '^[^\\S\\r\\n]*gem\\s*[\'"]{1}([\\w-_]+)[\'"]{1}'
   
   activate: (state) ->
     @messages = []
@@ -19,7 +20,9 @@ module.exports = GemWiseguy =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'gem-wiseguy:toggle': => @toggleAll()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'gem-wiseguy:toggle-all': => @toggleAll()
+    # Register command that toggles this view
+    @subscriptions.add atom.commands.add 'atom-workspace', 'gem-wiseguy:toggle-at-cursor': => @toggleAtCursor()
     
   deactivate: ->
     @destroyMessages()
@@ -36,40 +39,55 @@ module.exports = GemWiseguy =
     @messages = []
 
   toggleAll: ->
-    self = this
-    @allToggled = !@allToggled
-    
-    if @allToggled
+    if @messages.length == 0
       if @messenger
         gemfilePath = atom.workspace.getActiveTextEditor().getPath()
         
-        if gemfilePath.endsWith('Gemfile')
-          activeEditor = atom.workspace.getActiveTextEditor()
-          buffer = activeEditor.getBuffer()
-          Bundler.getGemfileLock(gemfilePath).then (gemfileLock) ->
+        if @inGemFile(gemfilePath)
+          regex = new RegExp(@gemNameRegex, 'igm')
+          Bundler.getGemfileLock(gemfilePath).then (gemfileLock) =>
+            buffer = atom.workspace.getActiveTextEditor().getBuffer()
             try
-              buffer.scan ///^[^\S\r\n]*gem\s*['"]{1}([\w-_]+)['"]{1}///igm, (res) ->
+              buffer.scan regex, (res) =>
                 gemName = res.match[1]
                 start = res.range.start
                 start.column = res.match[0].indexOf(gemName)
                 range = _.clone(res.range)
                 range.start = start
-                self.displayGemInfo(gemName, gemfileLock[gemName], range)
+                @displayGemInfo(gemName, gemfileLock[gemName], range)
             catch e
               console.log(e)
               return false
         else
-          atom.notifications.addWarning "You must have your Gemfile open to turn on gem-wiseguy"
+          atom.notifications.addWarning "You must have your Gemfile open to use gem-wiseguy"
       else
         atom.notifications.addError("You need to install the 'inline-messenger' package in order to use gem-wiseguy")
     else
       @destroyMessages()
 
+  toggleAtCursor: ->
+    gemfilePath = atom.workspace.getActiveTextEditor().getPath()
+    if @inGemFile(gemfilePath)
+      regex = new RegExp(@gemNameRegex, 'i')
+      Bundler.getGemfileLock(gemfilePath).then (gemfileLock) =>
+        cursors = atom.workspace.getActiveTextEditor().getCursors()
+        _(cursors).forEach (cursor) =>
+          line = cursor.getCurrentBufferLine()
+          match = regex.exec(line)
+          gemName = match[1]
+          row = cursor.getBufferRow()
+          start_col = line.indexOf(gemName)
+          range = new Range([row, start_col],
+                            [row, start_col + gemName.length]) 
+          @displayGemInfo(gemName, gemfileLock[gemName], range)
+  
+  inGemFile: (path) ->
+    path.endsWith('Gemfile')
+    
   displayGemInfo: (gemName, currentInfo, range) ->
-    self = this
-    RubyGems.getGemInfo(gemName).then (result) ->
+    RubyGems.getGemInfo(gemName).then (result) =>
       if result.error
-        self.messages.push self.messenger.message
+        @messages.push @messenger.message
           range: range
           text: result.error
           severity: 'error'
@@ -80,8 +98,8 @@ module.exports = GemWiseguy =
         runDeps = ""
         _(result.dependencies.runtime).forEach (dep) ->
           runDeps += "<li>#{dep.name}: #{dep.requirements}</li>"
-          
-        self.messages.push self.messenger.message
+
+        @messages.push @messenger.message
           range: range
           html: """
             <div class="wg-links">
