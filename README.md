@@ -12,13 +12,15 @@ Get quick info about your Gemfile gems without leaving your editor.
 To get info on all gems:
 
 * Toggle gem-wiseguy using the command:
+
 `Gem Wiseguy: Toggle All`
 or keyboard shortcut
 `CTRL-ALT-g`
  
-To get info select gems:
+To get info on specific gems only (faster):
 
 * Place cursor on one or more gems then run the command:
+
 `Gem Wiseguy: Toggle At Cursor`
 or keyboard shortcut
 `CTRL-ALT-i`
