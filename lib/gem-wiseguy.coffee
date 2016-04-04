@@ -104,9 +104,10 @@ module.exports = GemWiseguy =
           html: """
             <div class="wg-links">
               <ul>
-                <li><a href="#{result.documentation_uri}">Docs</a></li>
-                <li><a href="#{result.source_code_uri}">Source</a></li>
-                <li><a href="#{result.bug_tracker_uri}">Bugs/Issues</a></li>
+                <li><a class="#{result.homepage_uri == null && 'disabled'}" href="#{result.homepage_uri}">Project Page</a></li>
+                <li><a class="#{result.documentation_uri == null && 'disabled'}" href="#{result.documentation_uri}">Docs</a></li>
+                <li><a class="#{result.source_code_uri == null && 'disabled'}" href="#{result.source_code_uri}">Source</a></li>
+                <li><a class="#{result.bug_tracker_uri == null && 'disabled'}" href="#{result.bug_tracker_uri}">Bugs/Issues</a></li>
               </ul>
             </div>
             <div class="wg-info wg-current-v">Installed: #{currentInfo.version}</div>
