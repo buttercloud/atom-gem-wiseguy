@@ -5,6 +5,14 @@ Get quick info about your Gemfile gems without leaving your editor.
 # Installing
 `apm install inline-messenger gem-wiseguy`
 
+If you're using rbenv, you need to make sure your PATH is set correctly for Atom.  You can do this inside of the `~/.atom/init.coffee` file.
+ 
+Add a line like this for rbenv:
+```coffee 
+process.env.PATH = "#{process.env.HOME}/.rbenv/shims:#{process.env.HOME}/.rbenv/bin:#{process.env.PATH}" 
+```
+There is probably a similar process to get RVM to work.
+
 # Usage
 
 * Open your Gemfile.
