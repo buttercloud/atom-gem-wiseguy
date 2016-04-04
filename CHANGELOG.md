@@ -1,4 +1,7 @@
-## 0.3.0 - First Release
+### 0.4.4
+* Disable links if resource unavailable
+
+## 0.3.0
 * Add support for 'Toggle At Cursor' command to get info for select gems instead of all
 
 ## 0.1.0 - First Release
